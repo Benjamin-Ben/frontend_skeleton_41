@@ -1,57 +1,23 @@
 <% include ./partials/header %>
     <h1>Produkter</h1>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Navn</th>
-                <th>Pris</th>
-                <th>Kategori</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tbody>
-                <% results.forEach(result => { %>
-                <tr>
-                    <td><a href="/editProduct/<%= result.id %>">Rediger</a>&nbsp;
-                    <a href="/deleteProduct/<%= result.id %>">Slet</a></td>
-                    <td><%= result.name %></td>
-                    <td><%= result.price %></td>
-                    <td><%= result.category %></td>
-                </tr>
-                <% }); %>
-            </tbody>
-        </tbody>
-    </table>
-    <form method="post" style="margin-top: 3%;">
-        <fieldset>
-            <label for="name">Navn: </label><br>
-            <input type="text" name="name" id="name">
-        </fieldset>
-        <fieldset>
-            <label for="description">Description: </label><br>
-            <textarea name="description" id="description" cols="30" rows="10"></textarea>
-        </fieldset>
-        <fieldset>
-            <label for="price">Pris: </label><br>
-            <input type="number" name="price" id="price">
-        </fieldset>
-        <fieldset>
-            <label for="weight">Vægt: </label><br>
-            <input type="number" name="weight" id="weight">
-        </fieldset>
-        <fieldset>
-            <label for="amount">Antal på lager: </label><br>
-            <input type="number" name="amount" id="amount">
-        </fieldset>
-        <fieldset>
-            <label for="fk_category">Kategori: </label><br>
-            <select name="fk_category" id="fk_category">
-                <% categoryResults.forEach(result => { %>
-                <option value="<%= result.id %>"><%= result.name %></option>
-                <% }); %>
-            </select>
-        </fieldset>
-        <button type="submit">Opret</button>
-    </form>
+
+    <div id="product-categories-dropdown">
+        <div>Vælg Kategori</div>
+        <ul>
+            <% categoryResults.forEach(result => { %>
+                <li><a href="/products/<%= result.id %>"><%= result.name %></a></li>
+            <% }); %>
+        </ul>
+    </div>
+
+    <section id="products-section" class="wrapper">
+        <% results.forEach(result => { %>
+            <figure>
+                <a href="/product/<%= result.id %>">
+                    <img src="/img/uploads/<%= result.img %>" alt="">
+                    <figcaption><%= result.name %> - <%= result.price %>kr</figcaption>
+                </a>
+            </figure><div class="breaker"></div>
+        <% }); %>
+    </section>
 <% include ./partials/footer %>

@@ -1,4 +1,5 @@
 const { 
+    getAllFrontendProducts, getAllFrontendProductsFromCategory,
     createProduct,
     getProducts,
     getEditProductForm, editProduct, editProductImg,
@@ -10,7 +11,9 @@ const isEmployee = require('../middleware/is-employee');
 module.exports = function (app) {
 
     // Client Site ---------------------------------------------------------------------------------------------------
-
+    app.get('/products', getAllFrontendProducts);
+    app.get('/products/:id', getAllFrontendProductsFromCategory);
+    app.get('/product/:id', getAllFrontendProducts);
 
     // ADMIN PANEL ---------------------------------------------------------------------------------------------------
 

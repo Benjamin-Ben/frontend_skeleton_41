@@ -49,17 +49,32 @@ img {
 
 /* Home Products Section ---------------------------- */
 
-#homepage-random-products {
+#products-section {
     display: flex;
     margin: 5% 0;
+    flex-flow: row wrap;
 }
 
-#homepage-random-products figure {
+#products-section figure {
     flex:1;
     margin: 0 2.5%;
 }
 
-#homepage-random-products figcaption {
+.breaker {
+    display:none;
+}
+
+.breaker:nth-child(3n) {
+  display:block;
+  width:100%;
+  height:0;
+  margin-top: 4%;
+ }
+
+#products-section  figcaption {
     display: block;
     text-align: center;
 }
+
+
+/* Products --------------------------------------------------------------------------------------------------------------- */

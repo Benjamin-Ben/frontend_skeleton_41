@@ -9,7 +9,7 @@ exports.getHome = async function (req, res, next) {
         WHERE homepage = 1
         LIMIT 1`;
 
-        const homeProductsSQL = `SELECT id, name, img
+        const homeProductsSQL = `SELECT id, name, img, price
         FROM products
         ORDER BY rand()
         LIMIT 3`;

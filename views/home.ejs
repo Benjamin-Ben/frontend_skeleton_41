@@ -4,16 +4,16 @@
         <h1><%= homeMainResult.title %></h1>
         <div>
             <article><%- homeMainResult.content %></article>
-            <div><img src="./img/uploads/<%= homeMainResult.img %>" alt=""></div>
+            <div><img src="/img/uploads/<%= homeMainResult.img %>" alt=""></div>
         </div>
     </section>
 
-    <section id="homepage-random-products" class="wrapper">
+    <section id="products-section" class="wrapper">
         <% homeProductResults.forEach(result => { %>
             <figure>
                 <a href="/product/<%= result.id %>">
-                    <img src="./img/uploads/<%= result.img %>" alt="">
-                    <figcaption><%= result.name %></figcaption>
+                    <img src="/img/uploads/<%= result.img %>" alt="">
+                    <figcaption><%= result.name %> - <%= result.price %>kr</figcaption>
                 </a>
             </figure>
         <% }); %>

@@ -4,7 +4,44 @@ const uploadDir = `./public/img/uploads/`;
 
 // Client Site ---------------------------------------------------------------------------------------------------
 
+exports.getAllFrontendProducts = async function (req, res, next) {
+    const productsSQL = `SELECT products.id, products.name, products.description, products.price, products.weight, products.amount, products.img, categories.name AS category
+    FROM products
+    INNER JOIN categories ON products.fk_category = categories.id`;
 
+    const categoriesSQL = `SELECT id, name
+    FROM categories`;
+
+    const [rows] = await db.query(productsSQL);
+
+    const [rows2] = await db.query(categoriesSQL);
+
+        
+    res.render('products', {
+        results: rows,
+        categoryResults: rows2
+    });
+}
+
+exports.getAllFrontendProductsFromCategory = async function (req, res, next) {
+    const productsSQL = `SELECT products.id, products.name, products.description, products.price, products.weight, products.amount, products.img, categories.name AS category
+    FROM products
+    INNER JOIN categories ON products.fk_category = categories.id
+    WHERE categories.id = :id`;
+
+    const categoriesSQL = `SELECT id, name
+    FROM categories`;
+
+    const [rows] = await db.query(productsSQL, { id: req.params.id });
+
+    const [rows2] = await db.query(categoriesSQL);
+
+        
+    res.render('products', {
+        results: rows,
+        categoryResults: rows2
+    });
+}
 
 
 // ADMIN PANEL --------------------------------------------------------------------------------------------------
