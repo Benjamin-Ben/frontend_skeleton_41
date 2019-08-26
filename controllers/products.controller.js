@@ -2,6 +2,13 @@ const db = require('../config/mysql2');
 const fs = require('fs');
 const uploadDir = `./public/img/uploads/`;
 
+// Client Site ---------------------------------------------------------------------------------------------------
+
+
+
+
+// ADMIN PANEL --------------------------------------------------------------------------------------------------
+
 exports.createProduct = async function (req, res, next) {
     try {
         const data = fs.readFileSync(req.files.img.path);
