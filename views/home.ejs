@@ -1,16 +1,20 @@
 <% include ./partials/header %>
     
     <section id="homepage-main-section">
-        <h1></h1>
-        <article></article>
-        <img src="" alt="">
+        <h1><%= homeMainResult.title %></h1>
+        <article><%- homeMainResult.content %></article>
+        <img src="./img/uploads/<%= homeMainResult.img %>" alt="">
     </section>
 
     <section id="homepage-random-products">
-        <figure>
-            <img src="" alt="">
-            <figcaption></figcaption>
-        </figure>
+        <% homeProductResults.forEach(result => { %>
+            <figure>
+                <a href="/product/<%= result.id %>">
+                    <img src="./img/uploads/<%= result.img %>" alt="">
+                    <figcaption><%= result.name %></figcaption>
+                </a>
+            </figure>
+        <% }); %>
     </section>
 
 <% include ./partials/footer %>

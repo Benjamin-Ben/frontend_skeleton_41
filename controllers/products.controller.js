@@ -42,9 +42,9 @@ exports.getProducts = async function (req, res, next) {
         const categoriesSQL = `SELECT id, name
         FROM categories`;
 
-        const [rows, fields] = await db.query(productsSQL);
+        const [rows] = await db.query(productsSQL);
 
-        const [rows2, fields2] = await db.query(categoriesSQL);
+        const [rows2] = await db.query(categoriesSQL);
 
         
         res.render('admin_products', {
