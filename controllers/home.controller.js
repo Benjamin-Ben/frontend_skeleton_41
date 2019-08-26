@@ -4,7 +4,7 @@ const db = require('../config/mysql2');
 
 exports.getHome = async function (req, res, next) {
     try {
-        res.render('home');
+        res.render('error');
     } catch (error) {
         console.error(error);
         res.send('FEJL!!!!')
