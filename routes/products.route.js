@@ -8,6 +8,12 @@ const isAuthorized = require('../middleware/is-authenticated');
 const isEmployee = require('../middleware/is-employee');
 
 module.exports = function (app) {
+
+    // Client Site ---------------------------------------------------------------------------------------------------
+
+
+    // ADMIN PANEL ---------------------------------------------------------------------------------------------------
+
     // Create 
     app.post('/admin/products', [isAuthorized, isEmployee], createProduct);
 
