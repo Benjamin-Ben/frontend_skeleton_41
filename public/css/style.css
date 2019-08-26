@@ -1,1 +1,38 @@
 @charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    width:100%; 
+    height: auto;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* HOME --------------------------------------------------------------------------------------------------------------- */
+#homepage-main-section > div {
+    display: flex;
+}
+
+#homepage-main-section h1 {
+    width:100%; 
+    text-align: center;
+}
+
+#homepage-main-section article {
+   flex:1;
+   margin-right:6%;
+   font-size:20px;
+}
+
+#homepage-main-section > div div {
+    width:35%;
+}

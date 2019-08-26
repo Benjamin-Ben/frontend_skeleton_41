@@ -1,9 +1,11 @@
 <% include ./partials/header %>
     
-    <section id="homepage-main-section">
+    <section id="homepage-main-section" class="wrapper">
         <h1><%= homeMainResult.title %></h1>
-        <article><%- homeMainResult.content %></article>
-        <img src="./img/uploads/<%= homeMainResult.img %>" alt="">
+        <div>
+            <article><%- homeMainResult.content %></article>
+            <div><img src="./img/uploads/<%= homeMainResult.img %>" alt=""></div>
+        </div>
     </section>
 
     <section id="homepage-random-products">
