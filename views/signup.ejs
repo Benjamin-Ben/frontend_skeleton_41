@@ -1,0 +1,71 @@
+<% include ./partials/header %>
+    <form method="post" id="signupForm">
+        <fieldset>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" required>
+            <span id="emailError" style="color:red;"></span>
+        </fieldset>
+        <fieldset>
+            <label for="username">Brugernavn: </label>
+            <input type="text" name="username" id="username" required>
+            <span id="usernameError" style="color:red;"></span>            
+        </fieldset>
+        <fieldset>
+            <label for="password">Adgangskode: </label>
+            <input type="password" name="password" id="password" required>
+            <span id="passwordError" style="color:red;"></span>            
+        </fieldset>
+        <button type="submit">Opret</button>
+        <span style="color:red; display:block;"><%= messages.error ? messages.error : '' %></span>
+    </form>
+
+    <script>
+
+        const form = document.querySelector('#signupForm');
+        form.addEventListener('submit', function (event) {
+            const email = document.querySelector('#email');
+            let emailError = document.querySelector('#emailError');
+            emailError.innerHTML = '';
+            const username = document.querySelector('#username');
+            let usernameError= document.querySelector('#usernameError');
+            usernameError.innerHTML = '';            
+            const password = document.querySelector('#password');
+            let passwordError = document.querySelector('#passwordError');     
+            passwordError.innerHTML = '';
+            
+            let success = true;
+            
+            event.preventDefault();
+               
+            
+            if ( email.value == '' ) {
+                success = false; 
+                emailError.innerHTML = 'Email må ikke være tom';
+            }
+
+            if ( !/@/g.test(email.value) ) {
+                success = false; 
+                emailError.innerHTML = 'Email skal have et snabel-a \(@\)';
+            }
+
+            if ( username.value == '' ) {
+                success = false; 
+                usernameError.innerHTML = 'Brugernavn må ikke være tomt';
+            }
+
+            if ( /\d/g.test(username.value) ) {
+                success = false; 
+                usernameError.innerHTML = 'Brugernavn må ikke indeholde tal';
+            }
+
+            if ( password.value == '' ) {
+                success = false;
+                passwordError.innerHTML = 'Kodeordet må ikke være tomt';
+            }
+
+            if (success === true) {
+                form.submit();
+            }
+        });
+    </script>
+<% include ./partials/footer %>

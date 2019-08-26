@@ -1,0 +1,322 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+}
+
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:16px;
+    background-color: #bbb;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+::placeholder {
+    color: #8e8e8e;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* -------------------- ADMIN PANEL -------------------- */
+
+.admin_main {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.admin_nav_highlight {
+    color: #edce12!important;
+    font-weight: bold!important;
+}
+
+/* --------------- Aside --------------- */
+
+#slider_menu {
+    display: none;
+}
+
+.admin_aside_mobile {
+    display:none;
+}
+
+.admin_aside_navigation {
+    flex:1.2;
+    background-color: #333;
+    color: #fff;
+    padding:10px;
+}
+
+.admin_aside_navigation p {
+    text-align: center;
+    font-size: 24px;
+    margin-top:20px;
+}
+
+.admin_aside_navigation .admin_username {
+    color: #edce12;
+    font-weight: bold;
+}
+
+.admin_aside_navigation h1 {
+    text-align: center;
+    font-size:30px;
+    padding-top:10px;
+    margin: 40px 0;
+}
+
+.admin_aside_navigation a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.admin_aside_navigation a:hover {
+    text-decoration: underline;
+}
+
+
+.admin_aside_navigation nav ul li {
+    list-style: none;
+    font-size:20px;
+    margin-bottom: 3vh;
+    padding: 15px;
+    border-bottom: #fff solid 1px;
+}
+
+/* --------------- Main Content --------------- */
+
+.admin_content {
+    flex: 4;
+    padding: 1.5%;
+    background-color: #bbb;
+    color: #000;
+}
+
+.admin_content h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 3%;
+}
+
+/* ------------------------------ Overview ------------------------------ */
+
+.admin_form_create_update {
+    width: 40%;
+    margin: 0 auto 5% auto;
+
+}
+
+.admin_form_create_update legend {
+    font-size:20px;
+    font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+    padding:5px;
+    border-bottom: #000 solid 2px;
+    text-align: center;
+}
+
+.admin_form_create_update input {
+    height:24px;
+}
+
+.admin_form_create_update label {
+    display: block;
+    margin: 5% 0 1% 0;
+    font-size:18px;
+    font-weight: bold;
+}
+
+/* --------------- Table --------------- */
+
+.admin_read_data_table {
+    width:80%;
+    margin: 0 auto;
+}
+
+.admin_read_data_table, .admin_read_data_table td, .admin_read_data_table th {
+    border: #000 2px solid;
+    border-collapse: collapse;
+    padding:8px;
+}
+
+.admin_read_data_table .admin_edit, .admin_read_data_table .admin_delete {
+    padding: 10px;
+    margin: 2%;
+    color:#fff;
+    border-radius: 10px;
+    display: inline-block;
+    text-decoration: none;
+    text-align:center;
+}
+
+.admin_read_data_table .admin_edit {
+    background-color: #FE5501;
+}
+
+.admin_read_data_table .admin_delete {
+    background-color: #FE0101;
+}
+
+/* --------------------------------------------- FORMS --------------------------------------------- */
+
+.error_message {
+    color: red;
+    font-size: 14px;
+    margin-top:16px;
+    font-weight: bold;
+}
+
+
+/* --------------- Create and Update forms --------------- */
+
+.admin_form_create_update input[type="text"], .admin_form_create_update input[type="search"], .admin_form_create_update input[type="number"], .admin_form_create_update input[type="email"],  .admin_form_create_update textarea, .admin_form_create_update select, .admin_form_create_update button {
+    font-size:16px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    border: #000 solid 1px;
+}
+
+.admin_form_create_update input[type="text"], .admin_form_create_update input[type="search"], .admin_form_create_update input[type="number"], .admin_form_create_update input[type="email"], .admin_form_create_update textarea {
+    width:100%;
+    padding:14px;
+}
+
+.admin_form_create_update input[type="file"] {
+    font-size:16px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.admin_form_create_update select {
+    width:30%;
+    padding:8px;
+}
+
+.admin_form_create_update button {
+    display:block;
+    width: 100%;
+    margin: 5% auto 0 auto;
+    font-size: 24px;
+    padding:10px;
+    background-color:#111;
+    color:#fff;
+}
+
+
+/* --------------- Delete Form --------------- */
+
+.admin_delete_single_page_form {
+    width: 80%;
+    margin: 10% auto;
+    text-align:center;
+}
+
+.admin_delete_single_page_form legend {
+    font-size:26px;
+    font-family: "Arial Black", Arial, Helvetica, sans-serif;
+}
+
+.admin_delete_single_page_form .admin_delete_row_check_name {
+    color:red;
+}
+
+.admin_delete_single_page_form a, .admin_delete_single_page_form button {
+    display:inline-block;
+    margin:5% 3%;
+    font-size: 32px;
+    padding:10px;
+    width:18%;
+    border:#000 2px solid;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.admin_delete_single_page_form a {
+    background-color: #aaa;
+    color: #000;
+}
+
+.admin_delete_single_page_form button {
+    background-color: red;
+    color: #fff;
+}
+
+/* --------------------------------------------- MEDIA QUERIES --------------------------------------------- */
+@media screen and (max-width: 800px) {
+   
+    /* --------- Aside --------- */
+   
+    .admin_aside_pc {
+        display:none;
+    }
+
+    #slider_menu {
+        display: block;
+        position: fixed;
+        padding:20px;
+        font-size:30px;
+        color:#000;
+        z-index: 5;
+    }
+
+    .admin_aside_mobile {
+        display:block;
+        position: fixed;
+        overflow: hidden;
+        transform: translateX(-200%);
+        height: 100%;
+        width:92%;
+        z-index: 3;
+        transition: 300ms;
+        overflow-y: scroll;
+    }
+
+    /* --------- Main Content --------- */
+    .admin_content {
+        display: block;
+        width:100%;
+    }
+    
+    .admin_content h1 {
+        font-size: 20px;
+    }
+
+    /* ------------------------------ Overview ------------------------------ */
+
+    .admin_form_create_update {
+        width: 96%;
+        margin: 0 auto 5% auto;
+
+    }
+
+
+    /* --------------- Delete Form --------------- */
+
+    .admin_delete_single_page_form {
+        width: 80%;
+    }
+
+    .admin_delete_single_page_form a, .admin_delete_single_page_form button {
+        width:30%;
+    }
+
+    /* --------------- Table --------------- */
+
+    .admin_read_data_table {
+        width:100%;
+    }
+
+}

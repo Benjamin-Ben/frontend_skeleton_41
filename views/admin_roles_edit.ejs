@@ -1,0 +1,17 @@
+<% include ./partials/admin_header %>
+
+        <section class="admin_content">
+            <form method="POST" class="admin_form_create_update">
+                <legend>Rediger en Bruger Rolle</legend>
+                
+                <label for="name">Navn:</label>
+                <input type="text" name="name" id="name" value="<%= result.name %>">
+    
+                <label for="level">Point:</label>
+                <input type="text" name="level" id="level" value="<%= result.level %>">
+    
+                <button type="submit">Rediger</button>
+            </form>
+        </section>
+
+<% include ./partials/admin_footer %>

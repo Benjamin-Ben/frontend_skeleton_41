@@ -1,0 +1,21 @@
+<% include ./partials/admin_header %>
+        
+    <section class="admin_content">
+        <form class="admin_form_create_update" method="POST">
+            <legend>Rediger et Kategori</legend>
+            
+            <fieldset>
+                <label for="name">Kategori</label>
+                <input type="text" name="name" id="name" value="<%= result.name %>" required>
+            </fieldset>
+
+            <fieldset>
+                <label for="description"></label>
+                <textarea name="description" id="description" cols="30" rows="10" required><%= result.description %></textarea>
+            </fieldset>
+    
+            <button type="submit">Rediger</button>
+        </form>
+    </section>
+
+<% include ./partials/admin_footer %>

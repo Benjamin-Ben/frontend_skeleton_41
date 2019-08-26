@@ -1,0 +1,24 @@
+<% include ./partials/header %>
+    <h1>Brugere</h1>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Brugernavn</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><a href="/editUser/<%= user.id %>">Rediger</a>&nbsp;
+                        <a href="/deleteUser/<%= user.id %>">Slet</a></td>
+                        <td><%= user.username %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </tbody>
+    </table>
+<% include ./partials/footer %>

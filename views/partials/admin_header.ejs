@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/admin_panel.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+
+    
+
+    <main class="admin_main">
+        <i class="fas fa-bars" id="slider_menu"></i>
+        
+        <!--COMPUTER ASIDE-->
+        <aside class="admin_aside_navigation admin_aside_pc">
+            <p>Hej <span class="admin_username"><%= (typeof showUsername != 'undefined' ) ? showUsername : ''  %></span></p>
+            <h1><a href="/">Ben's Webshop</a></h1>
+            <nav class="admin_nav_pc">
+                <ul>
+                    <li><a href="/admin" class="admin_home">Admin Panel</a></li>
+                    <li><a href="/admin/users" class="admin_users">Brugere</a></li>
+                    <li><a href="/admin/roles" class="admin_roles">Bruger Roller</a></li> 
+                    <li><a href="/admin/products" class="admin_products">Produkter</a></li>
+                    <li><a href="/admin/categories" class="admin_categories">Kategorier</a></li>
+                    <% if( isLoggedIn === false ) { %>
+                        <li><a href="/login">Log ind</a></li>
+                    <% } else { %>
+                        <li><a href="/logout">Log ud</a></li>
+                    <% } %>
+                </ul>
+            </nav>
+        </aside>
+
+
+        <!--MOBILE ASIDE-->
+        <aside class="admin_aside_navigation admin_aside_mobile">
+            <p>Hej <span class="admin_username"><%= (typeof showUsername != 'undefined' ) ? showUsername : ''  %></span></p>
+            <h1><a href="/">Webshops</a></h1>
+            <nav class="admin_nav_pc">
+                <ul>
+                    <li><a href="/admin" class="admin_home">Admin Panel</a></li>
+                    <li><a href="/admin/users" class="admin_users">Brugere</a></li>
+                    <li><a href="/admin/roles" class="admin_categories">Bruger Roller</a></li>                    
+                    <li><a href="/admin/products" class="admin_products">Produkter</a></li>
+                    <li><a href="/admin/categories" class="admin_categories">Kategorier</a></li>
+                </ul>
+            </nav>
+        </aside>

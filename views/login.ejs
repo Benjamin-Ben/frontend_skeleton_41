@@ -1,0 +1,45 @@
+<% include ./partials/header %>
+    <form method="POST" id="loginForm">
+        <fieldset>
+            <label for="username">Brugernavn: </label>
+            <input type="text" name="username" id="username" value="admin" required>
+            <span id="usernameError" style="color:red;"></span>
+        </fieldset>
+        <fieldset>
+            <label for="password">Adgangskode: </label>
+            <input type="password" name="password" id="password" value="1234" required>
+            <span id="passwordError" style="color: red"></span>
+        </fieldset>
+        <button type="submit">Log ind</button>
+    </form>
+
+    <script>
+            const form = document.querySelector('#loginForm');
+            form.addEventListener('submit', function (event) {
+                const username = document.querySelector('#username');
+                let usernameError= document.querySelector('#usernameError');
+                usernameError.innerHTML = '';            
+                const password = document.querySelector('#password');
+                let passwordError = document.querySelector('#passwordError');     
+                passwordError.innerHTML = '';
+                
+                let success = true;
+                
+                event.preventDefault();
+    
+                if ( username.value == '' ) {
+                    success = false; 
+                    usernameError.innerHTML = 'Brugernavn må ikke være tomt';
+                }
+    
+                if ( password.value == '' ) {
+                    success = false;
+                    passwordError.innerHTML = 'Kodeordet må ikke være tomt';
+                }
+    
+                if (success === true) {
+                    form.submit();
+                }
+            });
+        </script>
+<% include ./partials/footer %>

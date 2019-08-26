@@ -1,0 +1,45 @@
+<% include ./partials/admin_header %>
+        <section class="admin_content">
+            <form method="POST" enctype="multipart/form-data" class="admin_form_create_update">
+                <legend>Rediger et produkt</legend>
+                <fieldset>
+                    <label for="name">Navn: </label><br>
+                    <input type="text" name="name" id="name" value="<%= result.name %>" required>
+                </fieldset>
+                <fieldset>
+                    <label for="description">Description: </label><br>
+                    <textarea name="description" id="description" cols="30" rows="10" required><%= result.description %></textarea>
+                </fieldset>
+                <fieldset>
+                    <label for="price">Pris: </label><br>
+                    <input type="number" name="price" id="price" step="0.01" value="<%= result.price %>" required>
+                </fieldset>
+                <fieldset>
+                    <label for="weight">Vægt: </label><br>
+                    <input type="number" name="weight" id="weight" value="<%= result.weight %>" required>
+                </fieldset>
+                <fieldset>
+                    <label for="amount">Antal på lager: </label><br>
+                    <input type="number" name="amount" id="amount" value="<%= result.amount %>" required>
+                </fieldset>
+                <fieldset>
+                    <label for="fk_category">Kategori: </label><br>
+                    <select name="fk_category" id="fk_category" required>
+                        <% categoryResults.forEach(result2 => { %>
+                            <option value="<%= result2.id %>" <%= ( result.fk_category == result2.id ? 'selected' : '' ) %>><%= result2.name %></option>
+                        <% }); %>
+                    </select>
+                </fieldset>
+                <button type="submit">Rediger</button>
+            </form>
+            <p class="error_message"></p>
+
+            <form action="/admin/editProduct/img/<%= result.img %>" method="POST" enctype="multipart/form-data" class="admin_form_create_update">
+                <legend>Rediger billede for dette Produkt</legend>
+                <label for="img">Billede:</label>
+                <input type="file" name="img" id="img" required>
+                <button type="submit">Rediger Billede</button>
+            </form>
+        </section>
+
+<% include ./partials/admin_footer %>

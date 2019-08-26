@@ -1,0 +1,61 @@
+<% include ./partials/admin_header %>
+
+        <section class="admin_content">
+            <form method="POST" class="admin_form_create_update" id="edit-user-form">
+                <legend>Rediger en bruger</legend>
+                
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" value="<%= user.email %>" required>
+                <span id="emailError" style="color: red;"></span>
+    
+                <label for="username">Brugernavn</label>
+                <input type="text" name="username" id="username" value="<%= user.username %>" required>
+                <span id="usernameError" style="color: red;"></span>
+    
+                <button type="submit">Rediger</button>
+                <span style="color: red; display: block;"><%= messages.error ? messages.error : ''  %></span>
+            </form>
+        </section>
+
+        <script>
+            const form = document.querySelector('#edit-user-form');
+            form.addEventListener('submit', function (event) {
+                const email = document.querySelector('#email');
+                let emailError = document.querySelector('#emailError');
+                emailError.innerHTML = '';
+                const username = document.querySelector('#username');
+                let usernameError= document.querySelector('#usernameError');
+                usernameError.innerHTML = '';
+                
+                let success = true;
+                
+                event.preventDefault();
+                
+                
+                if ( email.value == '' ) {
+                    success = false; 
+                    emailError.innerHTML = 'Email må ikke være tom';
+                }
+
+                if ( !/@/g.test(email.value) ) {
+                    success = false; 
+                    emailError.innerHTML = 'Email skal have et snabel-a \(@\)';
+                }
+
+                if ( username.value == '' ) {
+                    success = false; 
+                    usernameError.innerHTML = 'Brugernavn må ikke være tomt';
+                }
+
+                if ( /\d/g.test(username.value) ) {
+                    success = false; 
+                    usernameError.innerHTML = 'Brugernavn må ikke indeholde tal';
+                }
+
+                if (success === true) {
+                    form.submit();
+                }
+            });
+    </script>
+
+<% include ./partials/admin_footer %>

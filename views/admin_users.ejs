@@ -1,0 +1,28 @@
+<% include ./partials/admin_header %>
+
+    <section class="admin_content">
+        <h1>Admin Panel | Brugere</h1>
+        <table class="admin_read_data_table">
+            <thead>   
+                <tr>
+                    <th></th>
+                    <th>Brugernavn</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td>
+                            <a class="admin_edit" href="/admin/editUser/<%= user.id %>">Rediger</a>
+                            <a class="admin_delete" href="/admin/deleteUser/<%= user.id %>">Slet</a>
+                        </td>
+                        <td><%= user.username %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </section>
+
+<% include ./partials/admin_footer %>

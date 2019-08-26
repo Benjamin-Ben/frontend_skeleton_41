@@ -1,0 +1,40 @@
+<% include ./partials/admin_header %>
+
+    <section class="admin_content">
+        <h1>Admin Panel | Bruger Roller</h1>
+        <form method="post" class="admin_form_create_update">
+            <legend>Opret en Bruger Rolle</legend>
+            <fieldset>
+                <label for="name">Navn: </label>
+                <input type="text" name="name" id="name">
+            </fieldset>
+            <fieldset>
+                <label for="level">Point:</label>
+                <input type="text" name="level" id="level">
+            </fieldset>
+            <button type="submit">Opret</button>
+        </form>
+        <table class="admin_read_data_table">
+            <thead>   
+                <tr>
+                    <th></th>
+                    <th>Navn</th>
+                    <th>Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(result => { %>
+                    <tr>
+                        <td>
+                            <a class="admin_edit" href="/admin/editRole/<%= result.id %>">Rediger</a>
+                            <a class="admin_delete" href="/admin/deleteRole/<%= result.id %>">Slet</a>
+                        </td>
+                        <td><%= result.name %></td>
+                        <td><%= result.level %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </section>
+
+<% include ./partials/admin_footer %>

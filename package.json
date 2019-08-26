@@ -1,0 +1,33 @@
+{
+  "name": "folder_structure_practise",
+  "version": "0.1.0",
+  "description": "doing folder structure practise",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "jsdoc": "jsdoc ./controllers ./routes ./models ./middleware ./config ./server ./services ./error-handlers",
+    "dev": "nodemon index",
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-formidable": "^1.2.0",
+    "express-log-errors": "^2.1.1",
+    "express-session": "^1.16.2",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.5"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.3",
+    "nodemon": "^1.19.1"
+  }
+}

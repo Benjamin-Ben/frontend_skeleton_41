@@ -1,0 +1,68 @@
+<% include ./partials/admin_header %>
+
+    <section class="admin_content">
+        <h1>Admin Panel | Produkter</h1>
+        <form method="POST" enctype="multipart/form-data" class="admin_form_create_update">
+            <legend>Opret et produkt</legend>
+            <fieldset>
+            <label for="name">Navn: </label>
+            <input type="text" name="name" id="name" required>
+        </fieldset>
+        <fieldset>
+            <label for="description">Description: </label>
+            <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+        </fieldset>
+        <fieldset>
+            <label for="price">Pris: </label>
+            <input type="number" name="price" id="price" step="0.01" required>
+        </fieldset>
+        <fieldset>
+            <label for="weight">Vægt: </label>
+            <input type="number" name="weight" id="weight" required>
+        </fieldset>
+        <fieldset>
+            <label for="amount">Antal på lager: </label>
+            <input type="number" name="amount" id="amount" required>
+        </fieldset>
+        <fieldset>
+            <label for="fk_category">Kategori: </label>
+            <select name="fk_category" id="fk_category" required>
+                <% categoryResults.forEach(result => { %>
+                    <option value="<%= result.id %>"><%= result.name %></option>
+                <% }); %>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="img">Billede:</label>
+            <input type="file" name="img" id="img" required>
+        </fieldset>
+        <button type="submit">Opret</button>
+        <small class="error_message"><%= (typeof errorMessage != 'undefined') ? errorMessage : '' %></small>
+        </form>
+
+        <table class="admin_read_data_table">
+            <thead>   
+                <tr>
+                    <th></th>
+                    <th>Navn</th>
+                    <th>Kategori</th>
+                    <th>Pris</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(result => { %>
+                    <tr>
+                        <td>
+                            <a class="admin_edit" href="/admin/editProduct/<%= result.img %>">Rediger</a>
+                            <a class="admin_delete" href="/admin/deleteProduct/<%= result.img %>">Slet</a>
+                        </td>
+                        <td><%= result.name %></td>
+                        <td><%= result.category %></td>
+                        <td><%= result.price %>kr</td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </section>
+
+<% include ./partials/admin_footer %>

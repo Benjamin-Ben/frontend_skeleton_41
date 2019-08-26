@@ -1,0 +1,58 @@
+<% include ./partials/header %>
+    <h1>Rediger bruger: <%= user.username %></h1>
+    <form method="post" id="own-profile-form">
+        <fieldset>
+            <label for="username">Brugernavn: </label>
+            <input type="text" name="username" id="username" value="<%= user.username %>" required>
+            <span id="usernameError" style="color: red;"></span>
+        </fieldset>
+        <fieldset>
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" value="<%= user.email %>" required>
+            <span id="emailError" style="color: red;"></span>
+        </fieldset>
+        <button type="submit">Gem</button>
+        <span style="color: red;"><%= messages.error ? messages.error : '' %></span>
+    </form>
+
+    <script>
+        const form = document.querySelector('#own-profile-form');
+        form.addEventListener('submit', function (event) {
+            const email = document.querySelector('#email');
+            let emailError = document.querySelector('#emailError');
+            emailError.innerHTML = '';
+            const username = document.querySelector('#username');
+            let usernameError= document.querySelector('#usernameError');
+            usernameError.innerHTML = '';
+            
+            let success = true;
+            
+            event.preventDefault();
+               
+            
+            if ( email.value == '' ) {
+                success = false; 
+                emailError.innerHTML = 'Email må ikke være tom';
+            }
+
+            if ( !/@/g.test(email.value) ) {
+                success = false; 
+                emailError.innerHTML = 'Email skal have et snabel-a \(@\)';
+            }
+
+            if ( username.value == '' ) {
+                success = false; 
+                usernameError.innerHTML = 'Brugernavn må ikke være tomt';
+            }
+
+            if ( /\d/g.test(username.value) ) {
+                success = false; 
+                usernameError.innerHTML = 'Brugernavn må ikke indeholde tal';
+            }
+
+            if (success === true) {
+                form.submit();
+            }
+        });
+    </script>
+<% include ./partials/footer %>
