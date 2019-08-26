@@ -9,15 +9,23 @@
 
 img {
     width:100%; 
-    height: auto;
+    height: 100%;
 }
 
 .wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
 }
 
 /* HOME --------------------------------------------------------------------------------------------------------------- */
+
+/* Home Main Section ---------------------------- */
+
+#homepage-main-section {
+    margin: 2% 0 0 0;
+}
+
 #homepage-main-section > div {
     display: flex;
 }
@@ -25,6 +33,8 @@ img {
 #homepage-main-section h1 {
     width:100%; 
     text-align: center;
+    font-size:30px;
+    margin-bottom: 3%;
 }
 
 #homepage-main-section article {
@@ -35,4 +45,21 @@ img {
 
 #homepage-main-section > div div {
     width:35%;
+}
+
+/* Home Products Section ---------------------------- */
+
+#homepage-random-products {
+    display: flex;
+    margin: 5% 0;
+}
+
+#homepage-random-products figure {
+    flex:1;
+    margin: 0 2.5%;
+}
+
+#homepage-random-products figcaption {
+    display: block;
+    text-align: center;
 }
