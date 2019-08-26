@@ -1,5 +1,5 @@
 const { 
-    getAllFrontendProducts, getAllFrontendProductsFromCategory,
+    getAllFrontendProducts, getAllFrontendProductsFromCategory, getSingleProduct,
     createProduct,
     getProducts,
     getEditProductForm, editProduct, editProductImg,
@@ -13,7 +13,7 @@ module.exports = function (app) {
     // Client Site ---------------------------------------------------------------------------------------------------
     app.get('/products', getAllFrontendProducts);
     app.get('/products/:id', getAllFrontendProductsFromCategory);
-    app.get('/product/:id', getAllFrontendProducts);
+    app.get('/product/:id', getSingleProduct);
 
     // ADMIN PANEL ---------------------------------------------------------------------------------------------------
 

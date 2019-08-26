@@ -32,7 +32,9 @@ exports.getAllFrontendProductsFromCategory = async function (req, res, next) {
     const categoriesSQL = `SELECT id, name
     FROM categories`;
 
-    const [rows] = await db.query(productsSQL, { id: req.params.id });
+    const [rows] = await db.query(productsSQL, { 
+        id: req.params.id 
+    });
 
     const [rows2] = await db.query(categoriesSQL);
 
@@ -41,6 +43,26 @@ exports.getAllFrontendProductsFromCategory = async function (req, res, next) {
         results: rows,
         categoryResults: rows2
     });
+}
+
+exports.getSingleProduct = async function (req, res, next) {
+    try {
+        const productSQL = `SELECT products.id, products.name, products.description, products.price, products.weight, products.amount, products.img, categories.name AS category
+        FROM products
+        INNER JOIN categories ON products.fk_category = categories.id
+        WHERE products.id = :id`;
+
+        const [rows] = await db.query(productSQL, { 
+            id: req.params.id 
+        });
+
+        res.render('single-product', {
+            result: rows[0]
+        });
+    } catch (error) {
+        console.error(error);
+        res.send('Fejl!');
+    }
 }
 
 
