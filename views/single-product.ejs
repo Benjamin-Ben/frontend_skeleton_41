@@ -1,7 +1,22 @@
 <% include ./partials/header %>
     
-<section id="single-product-section">
-    <h1><%= result.name %></h1>
+<section id="single-product-section" class="wrapper">
+    <div style="width: 40%; margin: 2% auto;"><img src="/img/uploads/<%= result.img %>" alt=""></div>
+    <h1><%= result.name %> - <span><%= result.price %>kr</span></h1>
+    <div><%- result.description %></div>
+    <table>
+        <tr>
+            <th>Vægt</th>
+            <td><%= result.weight %></td>
+
+            <th>Antal på lager</th>
+            <td><%= result.amount %></td>
+        </tr>
+        <tr>
+            <th>Kategori</th>
+            <td><%= result.category %></td>
+        </tr>
+    </table>
 </section>
 
 <% include ./partials/footer %>
