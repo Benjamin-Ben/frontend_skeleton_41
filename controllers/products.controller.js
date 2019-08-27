@@ -65,15 +65,6 @@ exports.getSingleProduct = async function (req, res, next) {
     }
 }
 
-exports.searchProducts = async function (req, res, next) {
-    try {
-        
-    } catch (error) {
-        console.error(error);
-        res.render('error');
-    }
-}
-
 
 // ADMIN PANEL --------------------------------------------------------------------------------------------------
 

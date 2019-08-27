@@ -1,0 +1,39 @@
+<% include ./partials/header %>
+    <form action="/search/products" method="get" id="search_form" class="wrapper">
+        <legend>Søg</legend>
+        <fieldset>
+            <label for="name">Navn:</label>
+            <input type="text" name="name" id="name">
+        </fieldset>
+        <fieldset>
+            <label for="description">Beskrivelse:</label>
+            <input type="text" name="description" id="description">
+        </fieldset>
+        <fieldset>
+            <label for="category">Kategori:</label>
+            <select name="category" id="category">
+                <option value="0">Vælg et Kategori</option>
+                <% categoryResults.forEach(result => { %>
+                    <option value="<%= result.id %>"><%= result.name %></option>
+                <% }); %>
+            </select>
+        </fieldset>
+        
+        <button type="submit">Søg</button>
+    </form>
+
+        
+    <section id="products-section" class="wrapper">
+        <% results.forEach(result => { %>
+            <figure>
+                <a href="/product/<%= result.id %>">
+                    <img src="/img/uploads/<%= result.img %>" alt="">
+                    <figcaption><%= result.name %> - <%= result.price %>kr</figcaption>
+                </a>
+            </figure><div class="breaker"></div>
+        <% }); %>
+    </section>
+        
+        
+        
+<% include ./partials/footer %>
