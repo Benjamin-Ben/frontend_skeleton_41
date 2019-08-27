@@ -1,8 +1,8 @@
 const {
-    showSearchForm, searchProducts
+    showProductsSearchForm, searchProducts
 } = require('../controllers/search.controller');
 
 module.exports = function (app) {
-    app.get('/search', showSearchForm);
+    app.get('/search', showProductsSearchForm);
     app.get('/search/products', searchProducts);
 }
