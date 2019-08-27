@@ -21,6 +21,8 @@ exports.searchProducts = async function (req, res, next) {
         FROM products
         WHERE 1=1 `; 
 
+        let productsSQLParams = {};
+
         // If the user doesn't search on anything
         if ( (req.query.name == undefined || req.query.name == '') && (req.query.description == undefined || req.query.description == '') && (req.query.category == undefined || req.query.category == '' || req.query.category == 0) ) {
             const [ categoryRows ] = await db.query(categoriesSQL);
@@ -35,24 +37,23 @@ exports.searchProducts = async function (req, res, next) {
         // If the user does write something in 'name'
         if ( req.query.name != undefined && req.query.name != '' ) {
             productsSQL += ` AND name LIKE :name `;
+            productsSQLParams.name = '%' + req.query.name + '%';
         }
 
         // If the user does write something in 'description'
-        if ( req.query.description != undefined && req.query.name != '') {
+        if ( req.query.description != undefined && req.query.description != '') {
             productsSQL += ` AND description LIKE :description `;
+            productsSQLParams.description = '%' + req.query.description + '%';
         }
 
         // If the user does write something in 'category'
-        if ( req.query.fk_category != undefined || req.query.fk_category != '' ) {
+        if ( req.query.category != undefined && req.query.category != '' && req.query.category != 0 ) {
             productsSQL += ` AND fk_category = :fk_category `;
+            productsSQLParams.fk_category = req.query.category;
         }
 
         const [ categoryRows ] = await db.query(categoriesSQL);
-        const [ productRows ] = await db.query(productsSQL, {
-            name: req.query.name, 
-            description: req.query.description,
-            fk_category: req.query.fk_category
-        });
+        const [ productRows ] = await db.query(productsSQL, productsSQLParams);
 
         res.render('search', {
             categoryResults: categoryRows,
