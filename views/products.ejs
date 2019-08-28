@@ -10,6 +10,7 @@
         </ul>
     </div>
 
+    
     <section id="products-section" class="wrapper">
         <% results.forEach(result => { %>
             <figure>
@@ -20,4 +21,24 @@
             </figure><div class="breaker"></div>
         <% }); %>
     </section>
+
+    <% if (typeof current_page != undefined && typeof total_pages != undefined ) { %>
+        <section class="wrapper">
+            <ul>
+                <li class="<%= (current_page > 1 ? '' : 'disabled') %>">
+                    <a href="?page=<%= current_page -1 %>">&lt;</a>
+                </li>
+
+                <% for(let i = 0; i < total_pages; i++) { %>
+                    <li class="<%= (i+1) == current_page ? 'active' : '' %>">
+                        <a href="?page=<%= i+1 %>"><%= i+1 %></a>
+                    </li>
+                <% } %>
+                
+                <li class="<%= (current_page < total_pages ? '' : 'disabled') %>">
+                    <a href="?page=<%= current_page +1 %>">&gt;</a>
+                </li>
+            </ul>
+        </section>
+    <% } %>
 <% include ./partials/footer %>
