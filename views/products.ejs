@@ -22,7 +22,7 @@
         <% }); %>
     </section>
 
-    <% if (typeof current_page != undefined && typeof total_pages != undefined ) { %>
+    <% if ( (current_page != undefined || current_page != '') && (total_pages != undefined || total_pages != '') ) { %>
         <section class="wrapper">
             <ul>
                 <li class="<%= (current_page > 1 ? '' : 'disabled') %>">

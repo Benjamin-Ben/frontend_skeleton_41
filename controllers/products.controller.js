@@ -56,16 +56,45 @@ exports.getAllFrontendProducts = async function (req, res, next) {
 }
 
 exports.getAllFrontendProductsFromCategory = async function (req, res, next) {
+    let itemsPrPage = 15;
+
+    let currentPage = 1;
+
+    if ( req.query.page != undefined ) {
+        if ( parseInt(req.query.page) < 1 ) {
+            res.redirect('/products/' + req.params.id);
+            return;
+        }
+        if ( parseInt(req.query.page) >= 1 ) {
+            currentPage = parseInt(req.query.page);
+        }
+    }
+
+    let [result] = await db.query(`SELECT COUNT(*) AS total_items FROM products`);
+    let totalItems = result[0].total_items;
+
+    offset = (currentPage - 1) * itemsPrPage;
+
+    totalPages = Math.ceil(totalItems / itemsPrPage);
+
+    if (offset > totalItems) {
+        res.redirect('/products/' + req.params.id + '?page=' + totalPages);
+        return;
+    }
+    
     const productsSQL = `SELECT products.id, products.name, products.description, products.price, products.weight, products.amount, products.img, categories.name AS category
     FROM products
     INNER JOIN categories ON products.fk_category = categories.id
-    WHERE categories.id = :id`;
+    WHERE categories.id = :id
+    LIMIT :offset, :items_pr_page`;
 
     const categoriesSQL = `SELECT id, name
     FROM categories`;
 
     const [rows] = await db.query(productsSQL, { 
-        id: req.params.id 
+        id: req.params.id,
+        offset: offset,
+        items_pr_page: itemsPrPage
     });
 
     const [rows2] = await db.query(categoriesSQL);
@@ -73,7 +102,9 @@ exports.getAllFrontendProductsFromCategory = async function (req, res, next) {
         
     res.render('products', {
         results: rows,
-        categoryResults: rows2
+        categoryResults: rows2,
+        total_pages: totalPages,
+        current_page: currentPage
     });
 }
 
