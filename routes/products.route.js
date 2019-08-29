@@ -25,8 +25,8 @@ module.exports = function (app) {
     
     // Update
     app.get('/admin/editProduct/:img_params', [isAuthorized, isEmployee], getEditProductForm);
-    app.post('/admin/editProduct/:img_params', [isAuthorized, isEmployee], editProduct)
-    app.post('/admin/editProduct/img/:img_params', [isAuthorized, isEmployee], editProductImg )
+    app.post('/admin/editProduct/:img_params', [isAuthorized, isEmployee], editProduct);
+    app.post('/admin/editProduct/img/:img_params', [isAuthorized, isEmployee], editProductImg);
 
     // Delete
     app.get('/admin/deleteProduct/:img_params', [isAuthorized, isEmployee], deleteProduct);
